@@ -1,0 +1,15 @@
+<footer class="footer" *ngIf="todos && todos.length > 0">
+  <span class="todo-count"><strong>{{ pendingTodoCount }} </strong>{{ itemPluralization }} left </span>
+  <ul class="filters">
+    <li>
+      <a routerLink="/" routerLinkActive="selected">All</a>
+    </li>
+    <li>
+      <a routerLink="/pending" routerLinkActive="selected">Pending</a>
+    </li>
+    <li>
+      <a routerLink="/completed" routerLinkActive="selected">Completed</a>
+    </li>
+  </ul>
+  <button class="clear-completed" *ngIf="hasCompletedTodos" (click)="onClearCompletedClick()">Clear completed</button>
+</footer>

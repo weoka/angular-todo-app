@@ -1,0 +1,16 @@
+<section class="main" *ngIf="todos && todos.length > 0">
+  <ul class="todo-list">
+    <li *ngFor="let todo of todos" [class.completed]="todo.completed" [class.editing]="todo.id === editingTodoId">
+      <div class="view" *ngIf="todo.id !== editingTodoId">
+        <input
+          class="toggle"
+          type="checkbox"
+          [checked]="todo.completed"
+          (change)="onToggleCheckbox(todo)" />
+        <label (dblclick)="onEdit(todo)">{{ todo.title }}</label>
+        <button class="destroy" (click)="onClickDelete(todo)"></button> </div>
+
+        <input *ngIf="todo.id === editingTodoId" class="edit" type="text" [(ngModel)]="currentEditTitle" (blur)="onSaveEdit(todo)" (keyup.enter)="onSaveEdit(todo)" (keyup.escape)="onCancelEdit()" [appAutofocus]="true">
+    </li>
+  </ul>
+</section>
